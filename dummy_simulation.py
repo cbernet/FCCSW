@@ -21,6 +21,7 @@ hepmc_converter = HepMCConverter("Converter")
 # the input product name matches the output product name of the previous module
 hepmc_converter.Inputs.hepmc.Path="hepmc"
 hepmc_converter.Outputs.genparticles.Path="all_genparticles"
+hepmc_converter.Outputs.genvertices.Path="all_genvertices"
 
 from Configurables import GenParticleFilter
 genfilter = GenParticleFilter("StableParticles")
@@ -57,7 +58,9 @@ out = AlbersOutput("out",
                    OutputLevel=DEBUG)
 out.outputCommands = ["drop *",
                       "keep *jets*",
-                      "keep particles"]
+                      "keep genparticles",
+                      "keep particles",
+                      "keep all_genvertices"]
 
 ApplicationMgr( 
     TopAlg = [reader,hepmc_converter,genfilter,

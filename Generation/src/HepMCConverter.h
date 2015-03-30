@@ -4,6 +4,7 @@
 #include "GaudiAlg/GaudiAlgorithm.h"
 #include "DataObjects/HepMCEntry.h"
 #include "DataObjects/MCParticleCollection.h"
+#include "DataObjects/GenVertexCollection.h"
 #include "GaudiKernel/DataObjectHandle.h"
 
 class HepMCConverter: public GaudiAlgorithm {
@@ -23,6 +24,8 @@ private:
   DataObjectHandle<HepMCEntry> m_hepmchandle;
   /// Handle for the genparticles to be written
   DataObjectHandle<MCParticleCollection> m_genphandle;
+  /// Handle for the genvertices to be written
+  DataObjectHandle<GenVertexCollection> m_genvhandle;
 };
 
 #endif

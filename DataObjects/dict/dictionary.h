@@ -3,6 +3,16 @@
 #include <vector>
 
 #include "albers/Registry.h"
+
+#include "DataObjects/CaloCluster.h"
+#include "DataObjects/CaloClusterHandle.h"
+
+#include "DataObjects/CaloHitAssociation.h"
+#include "DataObjects/CaloHitAssociationHandle.h"
+
+#include "DataObjects/CaloHit.h"
+#include "DataObjects/CaloHitHandle.h"
+
 #include "DataObjects/Jet.h"
 #include "DataObjects/JetHandle.h"
 
@@ -11,6 +21,9 @@
 
 #include "DataObjects/Particle.h"
 #include "DataObjects/ParticleHandle.h"
+
+#include "DataObjects/GenVertex.h"
+#include "DataObjects/GenVertexHandle.h"
 
 #include "DataObjects/MCParticle.h"
 #include "DataObjects/MCParticleHandle.h"
@@ -29,6 +42,10 @@
 
 namespace DataModelDict {
 
+  std::vector<CaloCluster> caloclusters;
+  std::vector<CaloHitAssociation> calohitassociations;
+  std::vector<CaloHit> calohits;
+  std::vector<GenVertex> genvertices;
   std::vector<Jet> jet;
   std::vector<GenJet> genjet;
   std::vector<EventInfo> eventinfo;
