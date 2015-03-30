@@ -11,6 +11,6 @@ find_package(Geant4)
 
 gaudi_add_module(Simulation
                  src/*.cpp
-                 INCLUDE_DIRS Geant4 
+                 INCLUDE_DIRS Geant4 alberscore
                  LINK_LIBRARIES GaudiAlgLib Geant4 alberscore)
 
