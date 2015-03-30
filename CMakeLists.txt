@@ -5,6 +5,12 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
 find_package(GaudiProject)
 #---------------------------------------------------------------
 
+# set(DEF_INSTALL_CMAKE_DIR cmake)
+# set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
+#   "Installation directory for CMake files")
+# set(CMAKE_PREFIX_PATH $ENV{ALBERS})
+# find_package(alberscore)
+
 # Declare project name and version
 # Syntax:
 #    gaudi_project(this_project this_version

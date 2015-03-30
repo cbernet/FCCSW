@@ -4,7 +4,7 @@
 gaudi_subdir(Reconstruction v1r0)
 
 # this declaration will not be needed in the future
-gaudi_depends_on_subdirs(GaudiAlg DataObjects)
+gaudi_depends_on_subdirs(GaudiAlg)
 
 find_package(FastJet)
 find_package(ROOT COMPONENTS Physics)
@@ -12,5 +12,5 @@ find_package(ROOT COMPONENTS Physics)
 gaudi_add_module(Reconstruction
                  src/*.cpp
                  INCLUDE_DIRS FastJet ROOT
-                 LINK_LIBRARIES Fastjet ROOT GaudiAlgLib DataObjects)
+                 LINK_LIBRARIES Fastjet ROOT GaudiAlgLib)
 

@@ -3,8 +3,8 @@
 
 #include "GaudiAlg/GaudiAlgorithm.h"
 #include "GaudiKernel/DataObjectHandle.h"
-#include "DataObjects/ParticleCollection.h"
-#include "DataObjects/MCParticleCollection.h"
+#include "ParticleCollection.h"
+#include "MCParticleCollection.h"
 
 
 class DummySimulation: public GaudiAlgorithm {
