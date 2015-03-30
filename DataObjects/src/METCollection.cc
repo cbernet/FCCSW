@@ -7,14 +7,22 @@ const METHandle& METCollection::get(int index) const{
   return m_handles[index];
 }
 
-METHandle& METCollection::create(){
+METHandle METCollection::create() {
   m_data->emplace_back(MET());
   int index = m_data->size()-1;
+  // std::cout<<"creating handle: "<<index<<"/"<<m_collectionID<<std::endl;
   m_handles.emplace_back(METHandle(index,m_collectionID, m_data));
-  auto& tmp_handle = m_handles.back();
 
-  return tmp_handle;
+  return m_handles.back();
 }
+
+METHandle METCollection::insert(const METHandle& origin) {
+  m_data->emplace_back(origin.read());
+  int index = m_data->size()-1;
+  m_handles.emplace_back(METHandle(index,m_collectionID, m_data));
+
+  return m_handles.back();
+}  
 
 void METCollection::clear(){
   m_data->clear();

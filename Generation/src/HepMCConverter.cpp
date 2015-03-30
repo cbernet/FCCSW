@@ -25,7 +25,7 @@ StatusCode HepMCConverter::execute() {
     const HepMC::GenParticle& ptc = **ipart; 
     // if(ptc.status()==1) { 
     // ptc.print();
-    MCParticleHandle& outptc = particles->create();
+    MCParticleHandle outptc = particles->create();
     BareParticle& core = outptc.mod().Core;
     core.Type = ptc.pdg_id();
     core.Status = ptc.status(); 

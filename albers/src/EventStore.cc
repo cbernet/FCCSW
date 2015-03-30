@@ -23,7 +23,7 @@ namespace albers {
     auto result = std::find_if(begin(m_collections), end(m_collections),
                                [name](const CollPair& item)->bool { return name==item.first; }
 			      );
-
+    
     if (result != end(m_collections)){
       auto tmp = result->second;
       if (tmp != nullptr){
@@ -32,10 +32,12 @@ namespace albers {
       }
     } else if (m_reader != nullptr) {
       auto tmp = m_reader->readCollection(name);
+      collection = tmp;
       if (tmp != nullptr){
         m_collections.emplace_back(std::make_pair(name,tmp));
-	collection = tmp;
         return true;
+      } else {
+	return false;
       }
     } else {
       //COLIN: not sure collection is set to the nullptr in this case, see EventStore.h

@@ -20,7 +20,7 @@ StatusCode DummySimulation::execute() {
       ipart!=inparticles->end(); ++ipart) {
     const MCParticle& ptc = (*ipart).read();
     if(ptc.Core.Status==1) { 
-      ParticleHandle& outptc = particles->create();
+      ParticleHandle outptc = particles->create();
       outptc.mod().Core = ptc.Core; 
     }
   }

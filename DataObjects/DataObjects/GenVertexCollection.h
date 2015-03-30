@@ -1,7 +1,7 @@
 //AUTOMATICALLY GENERATED - DO NOT EDIT
 
-#ifndef VertexTrackAssociationCollection_H
-#define  VertexTrackAssociationCollection_H
+#ifndef GenVertexCollection_H
+#define  GenVertexCollection_H
 
 #include <string>
 #include <vector>
@@ -12,57 +12,57 @@
 #include "albers/CollectionBase.h"
 
 // datamodel specific includes
-#include "DataObjects/VertexTrackAssociation.h"
-#include "DataObjects/VertexTrackAssociationHandle.h"
+#include "DataObjects/GenVertex.h"
+#include "DataObjects/GenVertexHandle.h"
 
-typedef std::vector<VertexTrackAssociation> VertexTrackAssociationVector;
-typedef std::vector<VertexTrackAssociationHandle> VertexTrackAssociationHandleContainer;
+typedef std::vector<GenVertex> GenVertexVector;
+typedef std::vector<GenVertexHandle> GenVertexHandleContainer;
 
-class VertexTrackAssociationCollectionIterator {
+class GenVertexCollectionIterator {
 
   public:
-    VertexTrackAssociationCollectionIterator(int index, const VertexTrackAssociationCollection* collection) : m_index(index), m_collection(collection) {}
+    GenVertexCollectionIterator(int index, const GenVertexCollection* collection) : m_index(index), m_collection(collection) {}
 
-    bool operator!=(const VertexTrackAssociationCollectionIterator& x) const {
+    bool operator!=(const GenVertexCollectionIterator& x) const {
       return m_index != x.m_index; //TODO: may not be complete
     }
 
-    const VertexTrackAssociationHandle operator*() const;
+    const GenVertexHandle operator*() const;
 
-    const VertexTrackAssociationCollectionIterator& operator++() const {
+    const GenVertexCollectionIterator& operator++() const {
       ++m_index;
       return *this;
     }
 
   private:
     mutable int m_index;
-    const VertexTrackAssociationCollection* m_collection;
+    const GenVertexCollection* m_collection;
 };
 
 /**
 A Collection is identified by an ID.
 */
 
-class VertexTrackAssociationCollection : public albers::CollectionBase {
+class GenVertexCollection : public albers::CollectionBase {
 
 public:
-  typedef const VertexTrackAssociationCollectionIterator const_iterator;
+  typedef const GenVertexCollectionIterator const_iterator;
 
-  VertexTrackAssociationCollection();
-//  VertexTrackAssociationCollection(VertexTrackAssociationVector* data, int collectionID);
-  ~VertexTrackAssociationCollection(){};
+  GenVertexCollection();
+//  GenVertexCollection(GenVertexVector* data, int collectionID);
+  ~GenVertexCollection(){};
 
   void clear();
 
   /// Append a new object to the collection, and return a Handle to this object.
-  VertexTrackAssociationHandle create();
+  GenVertexHandle create();
 
   /// Insert an existing handle into the collection. 
   /// In this operation, the data pointed by the handle is copied.
-  VertexTrackAssociationHandle insert(const VertexTrackAssociationHandle& origin);  
+  GenVertexHandle insert(const GenVertexHandle& origin);  
   
   /// Returns a Handle to the object at position index in the collection
-  const VertexTrackAssociationHandle& get(int index) const;
+  const GenVertexHandle& get(int index) const;
 
   /// Currently does nothing
   void prepareForWrite(const albers::Registry* registry);
@@ -85,10 +85,10 @@ public:
   void* _getRawBuffer() { return (void*)&m_data;};
 
   /// returns the pointer to the data buffer
-  std::vector<VertexTrackAssociation>* _getBuffer() { return m_data;};
+  std::vector<GenVertex>* _getBuffer() { return m_data;};
 
   /// returns the collection of Handles
-  const VertexTrackAssociationHandleContainer& getHandles() { return m_handles; }
+  const GenVertexHandleContainer& getHandles() { return m_handles; }
 
   /// print some information
   void print() const;
@@ -96,8 +96,8 @@ public:
 
 private:
   unsigned m_collectionID;
-  VertexTrackAssociationVector* m_data;
-  VertexTrackAssociationHandleContainer m_handles;
+  GenVertexVector* m_data;
+  GenVertexHandleContainer m_handles;
   // members to handle 1-to-N-relations
   
 };

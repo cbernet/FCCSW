@@ -7,14 +7,22 @@ const CaloHitAssociationHandle& CaloHitAssociationCollection::get(int index) con
   return m_handles[index];
 }
 
-CaloHitAssociationHandle& CaloHitAssociationCollection::create(){
+CaloHitAssociationHandle CaloHitAssociationCollection::create() {
   m_data->emplace_back(CaloHitAssociation());
   int index = m_data->size()-1;
+  // std::cout<<"creating handle: "<<index<<"/"<<m_collectionID<<std::endl;
   m_handles.emplace_back(CaloHitAssociationHandle(index,m_collectionID, m_data));
-  auto& tmp_handle = m_handles.back();
 
-  return tmp_handle;
+  return m_handles.back();
 }
+
+CaloHitAssociationHandle CaloHitAssociationCollection::insert(const CaloHitAssociationHandle& origin) {
+  m_data->emplace_back(origin.read());
+  int index = m_data->size()-1;
+  m_handles.emplace_back(CaloHitAssociationHandle(index,m_collectionID, m_data));
+
+  return m_handles.back();
+}  
 
 void CaloHitAssociationCollection::clear(){
   m_data->clear();

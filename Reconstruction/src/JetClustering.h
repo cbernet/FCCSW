@@ -209,7 +209,7 @@ template< class P, class J, class A>
   for(const auto& pjet : pjets) {
     if(m_verbose)
       std::cout<<pjet.e()<<" "<<pjet.pt()<<" "<<pjet.eta()<<" "<<pjet.phi()<<std::endl;
-    auto& jet = jets->create();
+    auto jet = jets->create();
     BareJet& core = jet.mod().Core; 
     core.P4.Pt = pjet.pt();
     core.P4.Eta = pjet.eta();
@@ -223,7 +223,7 @@ template< class P, class J, class A>
     for(const auto& constit : constituents) {
       if(m_verbose) 
 	std::cout<<"\t"<<constit.user_index()<<std::endl;
-      auto& assoc = assocs->create();
+      auto assoc = assocs->create();
       assoc.mod().Jet = jet;
       assoc.mod().Particle = particles->get(constit.user_index());
     }

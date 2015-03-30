@@ -8,6 +8,8 @@
 #include "albers/Registry.h"
 #include "albers/CollectionBase.h"
 
+#include <stdexcept>
+
 namespace albers {
 
   void* Reader::getBuffer(const unsigned collectionID) {
@@ -36,7 +38,9 @@ namespace albers {
       return p->first;
     }
     TBranch* branch = m_eventTree->GetBranch(name.c_str());
-
+    if(branch == nullptr)
+      return nullptr;
+    
     CollectionBase* collection = nullptr;
     auto PODname= branch->GetClassName();
     TClass* theClass = gROOT->GetClass(PODname);
@@ -65,6 +69,9 @@ namespace albers {
 
   void Reader::openFile(const std::string& filename){
     m_file = new TFile(filename.c_str(),"READ","data file");
+    if(m_file->IsZombie()) {
+      throw std::runtime_error( std::string("file ") + filename + " does not exist." );
+    }
     m_eventTree = (TTree*) m_file->Get("events");
     readRegistry();
   }

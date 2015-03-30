@@ -7,14 +7,22 @@ const ParticleClusterAssociationHandle& ParticleClusterAssociationCollection::ge
   return m_handles[index];
 }
 
-ParticleClusterAssociationHandle& ParticleClusterAssociationCollection::create(){
+ParticleClusterAssociationHandle ParticleClusterAssociationCollection::create() {
   m_data->emplace_back(ParticleClusterAssociation());
   int index = m_data->size()-1;
+  // std::cout<<"creating handle: "<<index<<"/"<<m_collectionID<<std::endl;
   m_handles.emplace_back(ParticleClusterAssociationHandle(index,m_collectionID, m_data));
-  auto& tmp_handle = m_handles.back();
 
-  return tmp_handle;
+  return m_handles.back();
 }
+
+ParticleClusterAssociationHandle ParticleClusterAssociationCollection::insert(const ParticleClusterAssociationHandle& origin) {
+  m_data->emplace_back(origin.read());
+  int index = m_data->size()-1;
+  m_handles.emplace_back(ParticleClusterAssociationHandle(index,m_collectionID, m_data));
+
+  return m_handles.back();
+}  
 
 void ParticleClusterAssociationCollection::clear(){
   m_data->clear();

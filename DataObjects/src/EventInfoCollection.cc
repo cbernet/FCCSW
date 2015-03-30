@@ -7,14 +7,22 @@ const EventInfoHandle& EventInfoCollection::get(int index) const{
   return m_handles[index];
 }
 
-EventInfoHandle& EventInfoCollection::create(){
+EventInfoHandle EventInfoCollection::create() {
   m_data->emplace_back(EventInfo());
   int index = m_data->size()-1;
+  // std::cout<<"creating handle: "<<index<<"/"<<m_collectionID<<std::endl;
   m_handles.emplace_back(EventInfoHandle(index,m_collectionID, m_data));
-  auto& tmp_handle = m_handles.back();
 
-  return tmp_handle;
+  return m_handles.back();
 }
+
+EventInfoHandle EventInfoCollection::insert(const EventInfoHandle& origin) {
+  m_data->emplace_back(origin.read());
+  int index = m_data->size()-1;
+  m_handles.emplace_back(EventInfoHandle(index,m_collectionID, m_data));
+
+  return m_handles.back();
+}  
 
 void EventInfoCollection::clear(){
   m_data->clear();
